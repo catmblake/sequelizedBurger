@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+.jumbotron {
+    height: 400px;
+    background: url(../img/burger.jpg);
+    background-size: 100%;
+    margin-bottom: 0px;
+}
+#welcome {
+    text-align: center;
+    background: whitesmoke;
+    opacity: 0.8;
+    }
+.display-4 {
+    font-size: 60px;
+}
+.lead {
+    font-size: 36px;
+}
+.row {
+    padding: 40px;
+}
+button {
+    border-radius: 10%;
+    margin: 10px;
+}
+#burger-menu {
+    padding-right: 20px;
+}
+h2 {
+    font-size: 28px;
+}
+#add-burger {
+    background: url(../img/form-img.jpg);
+}
+#burger-form {
+    padding-top: 20px;
+    padding-bottom:20px;
+    text-align: center;
+    background: whitesmoke;
+    opacity: 0.8;
+}
+input {
+    border: 1px solid rgb(31, 26, 26);
+}
+img {
+    max-height: 50px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+@media screen and (max-width: 992px) {
+    .display-4 {
+        font-size: 48px;
+    }
+    .lead {
+        font-size: 24px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .jumbotron {
+        height: 300px;
+    }
+    .display-4 {
+        font-size: 36px;
+    }
+    .lead {
+        font-size: 24px;
+    }
+    h2 {
+        font-size: 24px;
+    }
+    .devour {
+        font-size: 12px;
+    }
+}
+@media screen and (max-width: 640px) {
+    .jumbotron {
+        height: 200px;
+    }
+    .display-4 {
+        font-size: 24px;
+    }
+    .lead {
+        font-size: 18px;
+    }
+    h2 {
+        font-size: 18px;
+    }
+    p {
+        font-size: 12px;
+    }
+}
