@@ -11,7 +11,8 @@
             <h2>Available Burgers!</h2>
             {{#each burgers}}
             {{#unless devoured}}
-            <p>{{burger_name}}<button class="btn btn-outline-danger devour" data-id="{{id}}" data-devoured="true">Devour
+            <p>{{burger_name}}
+                <button class="btn btn-outline-danger devour" data-id="{{id}}" data-devoured="true">Devour
                     It!</button></p>
             {{/unless}}
             {{/each}}
