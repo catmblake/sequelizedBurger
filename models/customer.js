@@ -5,8 +5,8 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false
         }
     });
-    Customer.associate = function (models) {
-        models.Customer.hasMany(models.Burger);
-    }
+    // Customer.associate = function (models) {
+    //     models.Customer.hasMany(models.Burger);
+    // }
     return Customer;
 };
