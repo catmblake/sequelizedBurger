@@ -11,10 +11,18 @@
             <h2>Available Burgers!</h2>
             {{#each burgers}}
             {{#unless devoured}}
-            <p>{{burger_name}}
-{{!-- add form element for user to create customer name to be associated with the devour button --}}
-                <button class="btn btn-outline-danger devour" data-id="{{id}}" data-devoured="true">Devour
-                    It!</button></p>
+            <form class="form-inline customer-form">
+                <div class="form-group mb-2">
+                    <label for="burger-name" class="sr-only">{{burger_name}}</label>
+                    <input type="text" readonly class="form-control-plaintext" id="burger-name" value="{{burger_name}}">
+                </div>
+                <div class="form-group mx-sm-3 mb-2">
+                    <label for="customer-name" class="sr-only">Customer</label>
+                    <input type="text" class="form-control" id="eaten-by" placeholder="Customer Name">
+                </div>
+                <button type="submit" class="btn btn-outline-danger devour" data-id="{{id}}" data-devoured="true">Devour
+                    It!</button>
+            </form>
             {{/unless}}
             {{/each}}
         </div>
@@ -52,14 +60,20 @@
 
 <script>
     $(function () {
-        $(".devour").on("click", function (event) {
-            var id = $(this).data("id");
-            var eaten = $(this).data("devoured");
+        $(".customer-form").on("submit", function (event) {
+            event.preventDefault();
+            var id = $(".devour").data("id");
+            var eaten = $(".devour").data("devoured");
 
             var newEatenState = {
                 devoured: eaten
             };
 
+            var customerName = $("#eaten-by").val().trim();
+            var burgerEatenBy = {
+                customer_name: customerName
+            };
+            console.log(burgerEatenBy);
             // Send the PUT request.
             $.ajax("/api/burgers/" + id, {
                 type: "PUT",
@@ -67,15 +81,23 @@
             }).then(
                 function () {
                     // Reload the page
-                    location.reload();
+                    //location.reload();
                 }
             );
+            $.ajax("/api/customers/", {
+                type: "POST",
+                data: burgerEatenBy
+            }).then(
+                function () { 
+                    console.log("Added Customer");
+                })
         });
+
 
         $(".create-form").on("submit", function (event) {
             event.preventDefault();
             var newBurger = {
-                burger_name: $("#burger").val().trim(),
+                burger_name: $("#burger").val().trim()
             };
             if (newBurger.burger_name) {
                 // Send the POST request.
@@ -90,25 +112,5 @@
                 );
             };
         });
-//alter below code to create new customer linked to the devoured burger
-        //$(".create-form").on("submit", function (event) {
-            //event.preventDefault();
-            //var newBurger = {
-                //burger_name: $("#burger").val().trim(),
-            //};
-            //if (newBurger.burger_name) {
-                // Send the POST request.
-                //$.ajax("/api/burgers", {
-                    //type: "POST",
-                    //data: newBurger
-                //}).then(
-                    //function () {
-                        // Reload the page
-                        //location.reload();
-                    //}
-                //);
-            //};
-        //});
-
     });
 </script>

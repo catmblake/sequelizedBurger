@@ -18,7 +18,11 @@ router.post("/api/burgers", function (req, res) {
   });
 });
 
-// add post route for creating new customer
+router.post("/api/customers", function (req, res) {
+  db.Customer.create(req.body).then(function (data) {
+    console.log(req.body);
+  });
+});
 
 router.put("/api/burgers/:id", function (req, res) {
   db.Burger.update({
