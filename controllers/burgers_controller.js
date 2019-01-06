@@ -20,7 +20,7 @@ router.post("/api/burgers", function (req, res) {
 
 router.post("/api/customers", function (req, res) {
   db.Customer.create(req.body).then(function (data) {
-    console.log(req.body);
+    res.json(data);
   });
 });
 
