@@ -16,7 +16,6 @@ Burger.associate = function(models) {
   models.Burger.belongsTo(models.Customer, {
     onDelete: "CASCADE",
     foreignKey: {
-      
       allowNull: true
     }
   });

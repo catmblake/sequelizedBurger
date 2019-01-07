@@ -4,7 +4,7 @@ var router = express.Router();
 
 // Create all routes and set up logic within those routes where required.
 router.get("/", function (req, res) {
-  db.Burger.findAll({}).then(function (data) {
+  db.Burger.findAll({include: [db.Customer]}).then(function (data) {
     var hbsObject = {
       burgers: data
     };
